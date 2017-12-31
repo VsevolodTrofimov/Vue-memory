@@ -56,12 +56,12 @@ export const showAllCards = state => {
 }
 
 
-export const flipCard = (state, card) => {
-  if( ! card.flipped) card.flipped = true
+export const applyHiding = state => {
+  state.toHide.forEach(card => card.hidden = true)
+  state.toHide.length = 0
 }
 
 
-export const hideCard = (state, card) => {
-  card.flipped = false
-  card.hidden = true
+export const flipCard = (state, card) => {
+  if( ! card.flipped) card.flipped = true
 }

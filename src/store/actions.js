@@ -23,6 +23,7 @@ export const endGame = ({commit}) => {
 
 
 export const flipCard = ({commit, dispatch, getters}, card) => {
+  commit('applyHiding')
   if((card.flipped && getters.flipped.length !== 2) || card.hidden) return
 
   if(getters.flipped.length === 1) {
@@ -50,7 +51,9 @@ export const applyCardMatch = ({commit, dispatch, state, getters}) => {
   commit('setScore', getters.score + diff)
   
   commit('setMatched', state.matched + 2)
-  getters.flipped.forEach(card => commit('hideCard', card))
+
+  getters.flipped.forEach(card => state.toHide.push(card))
 
   if(getters.unmatched === 0) dispatch('endGame')
+  else setTimeout(() => commit('applyHiding'), config.matchedVisibleTime)
 }
