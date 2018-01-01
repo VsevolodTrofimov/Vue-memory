@@ -21,10 +21,6 @@ export default {
 <style lang="sass" scoped>
   @import "~@/src/utility/vars.sass" 
 
-
-  $flip-jump: 8px
-
-
   .card
     border-radius: $border-radius--l
     box-shadow: 0 1px 3px 0 rgba(#000, .24)
@@ -33,6 +29,7 @@ export default {
     & > img
       display: block
       width: $card-width
+      height: $card-height
       pointer-events: none
 
   .card--hidden
@@ -43,9 +40,9 @@ export default {
     transition: transform $transition--m
   
   .flip-enter
-    transform: rotateY(90deg) translateY(-$flip-jump)
+    transform: rotateY(90deg) translateY(-$card-flip-jump-height)
   
   .flip-leave-to
-    transform: rotateY(-90deg) translateY(-$flip-jump)
+    transform: rotateY(-90deg) translateY(-$card-flip-jump-height)
 
 </style>

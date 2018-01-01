@@ -4,7 +4,7 @@
          alt="Flipped cards"
          class="banner">
 
-    <core-heading class="title"> <h1> Memory Game </h1> </core-heading>
+    <core-heading level="1" class="title"> Memory Game </core-heading>
     <core-button label="Начать игру" @click='start' />
   </div>
 </template>
