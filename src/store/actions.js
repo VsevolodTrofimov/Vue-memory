@@ -8,7 +8,11 @@ export const startGame = ({commit, dispatch}) => {
   commit('showAllCards', 'game')
   commit('setStage', 'game')
 
-  setTimeout(() => commit('maskAllCards'), config.initialVisibleTime)
+  dispatch('commitDelayed', {
+    mutation: 'maskAllCards',
+    delay: config.initialVisibleTime,
+    id: 'startGame-1'
+  })
 }
 
 
@@ -54,6 +58,30 @@ export const applyCardMatch = ({commit, dispatch, state, getters}) => {
 
   getters.flipped.forEach(card => state.toHide.push(card))
 
-  if(getters.unmatched === 0) dispatch('endGame')
-  else setTimeout(() => commit('applyHiding'), config.matchedVisibleTime)
+  if(getters.unmatched === 0) {
+    dispatch('endGame')
+  } else {
+    dispatch('commitDelayed', {
+      mutation: 'applyHiding',
+      delay: config.matchedVisibleTime,
+      id: 'applyCardMatch-1'
+    })
+  }
+}
+
+
+export const commitDelayed = ({commit, state}, {mutation, delay, id, data}) => {
+  if(typeof id === 'undefined') {
+    console.warn(
+      `Not passing id parameter to commitDelayed puts you in risk
+       of unknowingly resetting needed timeout`
+    )
+  }
+
+
+  commit('delayMutation', {
+    name: `${mutation}---${id}`,
+    cb: () => commit(mutation, data),
+    delay
+  })
 }
