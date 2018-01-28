@@ -9,6 +9,9 @@ const config = {
   // how long cards are visible in the beginning (ms)
   initialVisibleTime: 5000,
   
+  // how long cards are visible after thay were sucessfully mathed (ms)
+  matchedVisibleTime: 500,
+
   calcScore: {
     success: (matched, unmatched) => unmatched * 42,
     failure: (matched, unmatched) => matched * -42

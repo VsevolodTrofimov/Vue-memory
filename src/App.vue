@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <start-veiw v-if="stage === 'start'" />
-    <game-veiw  v-if="stage === 'game'" />
-    <end-veiw   v-if="stage === 'end'" />
+    <transition appear name="route-change" mode="out-in">
+      <start-veiw v-if="stage === 'start'" />
+      <game-veiw  v-else-if="stage === 'game'" />
+      <end-veiw   v-else-if="stage === 'end'" />
+    </transition>
   </div>
 </template>
 
@@ -28,6 +30,7 @@ export default {
 
 <style lang="sass">
   @import "~@/src/utility/vars.sass"
+  @import "~@/src/utility/animations.sass"
 
   body, html
     padding: 0
@@ -38,7 +41,7 @@ export default {
     align-items: center
     justify-content: center
     
-    height: 100vh
+    min-height: 100vh
     width: 100vw
     
     background: $fill--main
@@ -46,5 +49,5 @@ export default {
     font-family: $font--main
     font-size: $font-size--m
 
-
+  @include fade-animation("route-change")
 </style>

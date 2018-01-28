@@ -4,12 +4,12 @@
          alt="Flipped cards"
          class="banner">
 
-    <core-heading class="title"> 
-      <h2> Поздравляем! </h2>
-      <h2> Ваш итоговый счет: {{score}} </h2> 
+    <core-heading level="2" class="title"> 
+      Поздравляем! <br />
+      Ваш итоговый счет: {{score}}
     </core-heading>
     
-    <core-button label="Еще раз" @click="restart" />
+    <core-button @click="restart"> Еще раз </core-button>
   </div>
 </template>
 

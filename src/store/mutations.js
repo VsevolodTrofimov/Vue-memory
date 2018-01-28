@@ -56,12 +56,21 @@ export const showAllCards = state => {
 }
 
 
+export const applyHiding = state => {
+  state.toHide.forEach(card => card.hidden = true)
+  state.toHide.length = 0
+}
+
+
 export const flipCard = (state, card) => {
   if( ! card.flipped) card.flipped = true
 }
 
 
-export const hideCard = (state, card) => {
-  card.flipped = false
-  card.hidden = true
+export const delayMutation = (state, {name, cb, delay=0}) => {
+  if(state.timeouts[name]) {
+    clearTimeout(state.timeouts[name])
+  }
+  
+  state.timeouts[name] = setTimeout(cb, delay)
 }
