@@ -1,5 +1,6 @@
 @import "~@/src/utility/vars.sass"
 
+// FLIP: starts orthogonal to the view, rotates, can be made more human with $jump-height
 @mixin flip-animation($name, $jump-height: 0, $transition: $transition--m)
   .#{$name}-enter-active, .#{$name}-leave-active
     transition: transform $transition
@@ -10,7 +11,7 @@
   .#{$name}-leave-to
     transform: rotateY(-90deg) translateY(-$jump-height)
 
-
+// FADE: starts transparent, becomes visible
 @mixin fade-animation($name, $transition: $transition--m)
   .#{$name}-enter-active, .#{$name}-leave-active
     transition: opacity $transition

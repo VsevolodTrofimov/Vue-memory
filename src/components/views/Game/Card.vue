@@ -1,13 +1,13 @@
 <template>
   <transition appear name="card-flip" mode="out-in">
     <div class="card card--hidden" v-if="hidden" key="hidden">
-      <img :src="path" />
+      <img :src="path" class="card__image" />
     </div>
     <div class="card" v-else-if="flipped" key="front">
-      <img :src="path" />
+      <img :src="path" class="card__image" />
     </div>
-    <div class="card" v-else>
-      <img src="/static/cards/back.png" key="back" />
+    <div class="card" v-else key="back">
+      <img src="/static/cards/back.png" class="card__image" />
     </div>
   </transition>
 </template>
@@ -27,11 +27,11 @@ export default {
     box-shadow: 0 1px 3px 0 rgba(#000, .24)
     user-select: none
 
-    & > img
-      display: block
-      width: $card-width
-      height: $card-height
-      pointer-events: none
+  .card__image
+    display: block
+    width: $card-width
+    height: $card-height
+    pointer-events: none
 
   .card--hidden
     opacity: 0
