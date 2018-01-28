@@ -19,15 +19,15 @@ export default {
   @import "~@/src/utility/vars.sass" 
 
   h1, h2, h3, h4, ,h5, h6
-      padding: 0
-      margin: 0
+    padding: 0
+    margin: 0
 
-      color: $font-color--white
-      font-weight: 700
-      opacity: $opacity--main
-  
-      // pixel perfect
-      letter-spacing: 0.007em
+    color: $font-color--white
+    font-weight: 700
+    opacity: $opacity--main
+
+    // pixel perfect
+    letter-spacing: 0.007em
 
   h1
     text-transform: uppercase

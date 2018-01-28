@@ -7,7 +7,7 @@
     
     <div class="board">
       <div class="board__row" v-for="(row, idx) in board" :key="row[0].id + idx">
-        <game-card @click.native="flip(card)" v-bind="card"
+        <game-card class="board__card" @click.native="flip(card)" v-bind="card"
                    v-for="(card, idx) in row" :key="card.id + idx" />      
       </div>
     </div>
@@ -49,7 +49,7 @@ export default {
     flex-direction: column
     align-items: center
     padding: $space--l
-  
+
   .meta
     display: flex
     flex-direction: row
@@ -58,11 +58,21 @@ export default {
     width: 100%
     margin-bottom: $space--m
 
+
+  // wraps and half margins are done for small viewport size cases, when row wouldn't fit
+  .board
+    // compensates card bottom margins
+    margin-bottom: -$card-margin
+
   .board__row
     display: flex
     flex-direction: row
-    margin-bottom: $card-margin
-
-    & > * + *
-      margin-left: $card-margin
+    flex-wrap: wrap
+    justify-content: center
+    
+    // compensates card left-right margins
+    margin: 0 0-$card-margin/2
+    
+    .board__card
+      margin: 0 $card-margin/2 $card-margin $card-margin/2
 </style>
