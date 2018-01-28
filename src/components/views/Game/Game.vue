@@ -1,16 +1,20 @@
 <template>
   <div class="view">
     <div class="meta"> 
-      <core-button class="ghost" @click="restart"> 
+      <core-button class="ghost" @click="restart" data-tid="Menu-newGame"> 
         Начать заново
       </core-button>
-      <core-heading> <h4> Очки: {{score}} </h4> </core-heading>
+      <core-heading level="4"> 
+        Очки:
+        <span data-tid="Menu-scores"> {{score}} </span> 
+      </core-heading>
     </div>
     
-    <div class="board">
+    <div class="board" data-tid="Deck">
       <div class="board__row" v-for="(row, idx) in board" :key="row[0].id + idx">
-        <game-card class="board__card" v-bind="card"
+        <game-card class="board__card" v-bind="card" 
                    @click.native="flip(card)"
+                   :data-tid="card.flipped ? 'Card-flipped' : 'Card'"
                    v-for="(card, idx) in row" :key="card.id + idx" />      
       </div>
     </div>

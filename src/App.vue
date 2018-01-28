@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" data-tid="App">
     <transition appear name="route-change" mode="out-in">
       <start-veiw v-if="stage === 'start'" />
       <game-veiw  v-else-if="stage === 'game'" />

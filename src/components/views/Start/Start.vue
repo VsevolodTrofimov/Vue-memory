@@ -5,7 +5,7 @@
          class="banner">
 
     <core-heading level="1" class="title"> Memory Game </core-heading>
-    <core-button @click='start'> Начать игру </core-button>
+    <core-button @click='start' data-tid="NewGame-startGame"> Начать игру </core-button>
   </div>
 </template>
 

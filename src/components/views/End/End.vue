@@ -9,7 +9,7 @@
       Ваш итоговый счет: {{score}}
     </core-heading>
     
-    <core-button @click="restart"> Еще раз </core-button>
+    <core-button @click="restart" data-tid="EndGame-retryGame"> Еще раз </core-button>
   </div>
 </template>
 
