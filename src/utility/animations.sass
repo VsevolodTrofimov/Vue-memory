@@ -1,0 +1,28 @@
+@import "~@/src/utility/vars.sass"
+
+@mixin flip-animation($name, $jump-height: 0, $transition: $transition--m)
+  .#{$name}-enter-active, .#{$name}-leave-active
+    transition: transform $transition
+  
+  .#{$name}-enter
+    transform: rotateY(90deg) translateY(-$jump-height)
+  
+  .#{$name}-leave-to
+    transform: rotateY(-90deg) translateY(-$jump-height)
+
+
+@mixin fade-animation($name, $transition: $transition--m)
+  .#{$name}-enter-active, .#{$name}-leave-active
+    transition: opacity $transition
+  
+  .#{$name}-enter
+    opacity: 0
+
+  .#{$name}-enter-to
+    opacity: 1
+  
+  .#{$name}-leave
+    opacity: 1
+  
+  .#{$name}-leave-to
+    opacity: 0

@@ -1,5 +1,5 @@
 <template>
-  <transition appear name="flip" mode="out-in">
+  <transition appear name="card-flip" mode="out-in">
     <div class="card card--hidden" v-if="hidden" key="hidden">
       <img :src="path" />
     </div>
@@ -19,7 +19,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  @import "~@/src/utility/vars.sass" 
+  @import "~@/src/utility/vars.sass"
+  @import "~@/src/utility/animations.sass"
 
   .card
     border-radius: $border-radius--l
@@ -36,13 +37,5 @@ export default {
     opacity: 0
 
   
-  .flip-enter-active, .flip-leave-active
-    transition: transform $transition--m
-  
-  .flip-enter
-    transform: rotateY(90deg) translateY(-$card-flip-jump-height)
-  
-  .flip-leave-to
-    transform: rotateY(-90deg) translateY(-$card-flip-jump-height)
-
+  @include flip-animation("card-flip", $card-flip-jump-height)
 </style>
