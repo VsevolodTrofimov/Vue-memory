@@ -9,7 +9,7 @@
       Ваш итоговый счет: {{score}}
     </core-heading>
     
-    <core-button label="Еще раз" @click="restart" />
+    <core-button @click="restart"> Еще раз </core-button>
   </div>
 </template>
 

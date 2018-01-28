@@ -1,13 +1,16 @@
 <template>
   <div class="view">
     <div class="meta"> 
-      <core-button label="Начать заново" class="ghost" @click="restart" />
+      <core-button class="ghost" @click="restart"> 
+        Начать заново
+      </core-button>
       <core-heading> <h4> Очки: {{score}} </h4> </core-heading>
     </div>
     
     <div class="board">
       <div class="board__row" v-for="(row, idx) in board" :key="row[0].id + idx">
-        <game-card class="board__card" @click.native="flip(card)" v-bind="card"
+        <game-card class="board__card" v-bind="card"
+                   @click.native="flip(card)"
                    v-for="(card, idx) in row" :key="card.id + idx" />      
       </div>
     </div>
@@ -59,19 +62,17 @@ export default {
     margin-bottom: $space--m
 
 
-  // wraps and half margins are done for small viewport size cases, when row wouldn't fit
+  /* flex-wrap and half margins are done for small viewport sizes, 
+     when row wouldn't fit */
   .board
-    // compensates card bottom margins
-    margin-bottom: -$card-margin
+    margin-bottom: -$card-margin // compensates card bottom margins
 
   .board__row
     display: flex
     flex-direction: row
     flex-wrap: wrap
     justify-content: center
-    
-    // compensates card left-right margins
-    margin: 0 0-$card-margin/2
+    margin: 0 0-$card-margin/2 // compensates card left-right margins
     
     .board__card
       margin: 0 $card-margin/2 $card-margin $card-margin/2

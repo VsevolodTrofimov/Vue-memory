@@ -1,30 +1,27 @@
 <template>
   <button class="btn" @click="$emit('click')"> 
-    <slot> 
-      <div class="content"> {{label}} </div> 
-    </slot>
+    <slot /> 
   </button>
 </template>
-
-<script>
-export default {
-  props: ['label']
-}
-</script>
 
 <style lang="sass" scoped>
   @import "~@/src/utility/vars.sass" 
 
   .btn
     display: block
-    padding: 0
-    margin: 0
-    border: 0
+    padding: $space--s $space--m 
+    font-family: $font--main
+    font-weight: 700
+    font-size: $font-size--m
+    color: $font-color--main
     background: $color--white
     border-radius: $border-radius--m
-    box-shadow: none
     opacity: $opacity--main
     transition: 0.5s ease
+    // reset
+    box-shadow: none
+    margin: 0
+    border: 0
 
     &:focus
       outline: 0
@@ -39,24 +36,14 @@ export default {
   .btn.wide
     width: 100%
 
-  .content
-    padding: $space--s $space--m 
-    font-family: $font--main
-    font-weight: 700
-    font-size: $font-size--m
-    color: $font-color--main
-
   .btn.ghost 
-    background: transparent
+    padding: 0
     border-bottom: $border-width--m solid transparent
     border-top: $border-width--m solid transparent
+    background: transparent
     border-radius: 0
-
-    & > .content
-      padding: 0
-      color: $color--white
-      font-weight: 600
-  
+    font-weight: 600
+    color: $color--white
 
     &:hover
       border-color: rgba($color--white, .5)
