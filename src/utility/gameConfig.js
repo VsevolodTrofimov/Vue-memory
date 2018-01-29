@@ -29,9 +29,16 @@ const config = {
   },
 }
 
+const appliedFixes = {
+  even: false,
+  size: false
+}
 
 const ensureEvenBoard = config => {
-  if((config.board.cols * config.board.rows) % 2) ++config.board.cols
+  if((config.board.cols * config.board.rows) % 2) {
+    ++config.board.cols
+    appliedFixes.even = true
+  }
 
   config.board.size = config.board.rows * config.board.cols
 }
@@ -62,13 +69,28 @@ const ensureNoRepeats = config => {
       --config.board.rows
     }
 
+    /* in case board beacame\stopped being even 
+       as a side effect of size reduction */
+    appliedFixes.even = false
     ensureEvenBoard(config)
+
+    appliedFixes.size = true
   }  
 }
 
 
+// ensuring proper board
 config.cards.options = computeCardOptions(config.cards)
 ensureEvenBoard(config)
 ensureNoRepeats(config)
+
+
+// notifying about changes
+if(appliedFixes.size) console.warn('Board was too big')
+if(appliedFixes.even) console.warn('Board had uneven number of tiles')
+if(appliedFixes.size || appliedFixes.even) {
+  console.warn('Changed board size to', 
+               `[${config.board.rows} x ${config.board.cols}]`)
+}
 
 export default config
