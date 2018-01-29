@@ -1,6 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
+
 const WebpackChunkHashPlugin = require('webpack-chunk-hash')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
 const config = {
   entry: './src/main.js',
@@ -37,12 +40,6 @@ const config = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        options: {
-          presets: [
-            ["env", { "modules": false }],
-            "stage-3"
-          ]
-        },
         exclude: /node_modules/
       },
       {
@@ -75,8 +72,11 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
   config.output.filename = 'build-[hash].js'
+  config.devtool = false
+  config.devServer = {}
 
   config.plugins = (config.plugins || []).concat([
+    new WebpackCleanupPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -86,7 +86,12 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new WebpackChunkHashPlugin({algorithm: 'md5'})
+    new WebpackChunkHashPlugin({algorithm: 'md5'}),
+    new HtmlWebpackPlugin({
+        title: 'Vue memory',
+        template: path.resolve(__dirname, './index.html'),
+        filename: 'index.html'
+    }),
   ])
 }
 
