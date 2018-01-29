@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`End View matches snapshot 1`] = `
+<div class="view">
+    <img srcset="/static/banners/EndGame.png, /static/banners/EndGame@2x.png 2x" alt="Flipped cards" class="banner">
+    <h2 class="heading title">
+        Поздравляем!
+        <br> Ваш итоговый счет: <span data-tid="EndGame-finalScore"> 10 </span></h2>
+    <button data-tid="EndGame-retryGame" class="btn"> Еще раз </button>
+</div>
+`;
