@@ -11,11 +11,18 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     stage: 'start', // also possible: game, end
+    
     board: [[]],
     score: 0,
     matched: 0,
+
+    deck: {
+      loading: null,
+      loaded: false
+    },
+
     toHide: [],
-    timeouts: {}
+    timeouts: {},
   },
   getters,
   mutations,

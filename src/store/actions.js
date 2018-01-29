@@ -1,18 +1,40 @@
 import config from '@/src/utility/gameConfig'
+import { preloadImages } from '@/src/utility/preload'
 
+export const loadDeck = ({commit, dispatch}, attempts=0) => {
+  const loading = preloadImages(config.cards.options)
+  commit('deckLoaderRegister', loading)
 
-export const startGame = ({commit, dispatch}) => {
-  commit('fillBoard')
-  commit('setScore', 0)
-  commit('setMatched', 0)
-  commit('showAllCards', 'game')
-  commit('setStage', 'game')
+  loading
+    .then(() => {
+      commit('deckLoaded')
+    })
+    .catch((err) => {
+      console.error(err)
+      if(attempts < 10) dispatch('loadDeck', attempts + 1) // retrying
+    })
+}
 
-  dispatch('commitDelayed', {
-    mutation: 'maskAllCards',
-    delay: config.initialVisibleTime,
-    id: 'startGame-1'
-  })
+export const startGame = ({commit, dispatch, getters}) => {
+  if(getters.deck.loaded) {
+    commit('fillBoard')
+    commit('setScore', 0)
+    commit('setMatched', 0)
+    commit('showAllCards', 'game')
+    commit('setStage', 'game')
+  
+    dispatch('commitDelayed', {
+      mutation: 'maskAllCards',
+      delay: config.initialVisibleTime,
+      id: 'startGame-1'
+    })
+
+    //for future
+    preloadImages(['/static/cards/back.png', '/static/banners/EndGame@2x.png'])
+  } else {
+    commit('setStage', 'loading')
+    getters.deck.loading.then(() => dispatch('startGame'))
+  }
 }
 
 

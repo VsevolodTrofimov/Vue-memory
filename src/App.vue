@@ -1,9 +1,11 @@
 <template>
   <div id="app" data-tid="App">
     <transition appear name="route-change" mode="out-in">
-      <start-veiw v-if="stage === 'start'" />
-      <game-veiw  v-else-if="stage === 'game'" />
-      <end-veiw   v-else-if="stage === 'end'" />
+      <start-view v-if="stage === 'start'" />
+      <game-view  v-else-if="stage === 'game'" />
+      <end-view   v-else-if="stage === 'end'" />
+
+      <loading-view v-else-if="stage === 'loading'" />
     </transition>
   </div>
 </template>
@@ -11,9 +13,10 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-import StartVeiw from '@/src/components/views/Start/Start.vue'
-import GameVeiw from '@/src/components/views/Game/Game.vue'
-import EndVeiw from '@/src/components/views/End/End.vue'
+import LoadingView from '@/src/components/views/Loading/Loading.vue'
+import StartView from '@/src/components/views/Start/Start.vue'
+import GameView from '@/src/components/views/Game/Game.vue'
+import EndView from '@/src/components/views/End/End.vue'
 
 export default {
   computed: mapGetters({
@@ -21,9 +24,10 @@ export default {
   }),
 
   components: {
-    StartVeiw,
-    GameVeiw,
-    EndVeiw
+    LoadingView,
+    StartView,
+    GameView,
+    EndView
   }
 }
 </script>

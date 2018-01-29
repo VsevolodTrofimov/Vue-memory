@@ -17,3 +17,4 @@ export const flipped = state => {
 export const score = state => state.score
 export const board = state => state.board
 export const stage = state => state.stage
+export const deck  = state => state.deck

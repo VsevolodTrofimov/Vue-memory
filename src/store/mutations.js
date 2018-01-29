@@ -4,6 +4,14 @@ import getUniqueSet from '@/src/utility/getUniqueSet'
 import config from '@/src/utility/gameConfig'
 
 
+export const deckLoaderRegister = (state, loading) => {
+  state.deck.loading = loading
+}
+
+export const deckLoaded = state => {
+  state.deck.loaded = true
+}
+
 export const setStage = (state, newStage) => {
   state.stage = newStage
 }

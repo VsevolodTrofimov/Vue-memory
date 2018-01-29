@@ -17,8 +17,13 @@ import CoreHeading from '@/src/components/core/Heading/Heading.vue'
 
 export default {
   methods: mapActions({
-    start: 'startGame'
+    start: 'startGame',
+    loadDeck: 'loadDeck'
   }),
+
+  mounted: function() {
+    this.loadDeck()
+  },
 
   components: {
     CoreButton,
