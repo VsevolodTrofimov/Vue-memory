@@ -1,24 +1,36 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
-import { mount } from 'vue-test-utils'
-const VSSR = require('vue-server-renderer').createRenderer()
+import { mount, createLocalVue } from 'vue-test-utils'
+import { createRenderer } from 'vue-server-renderer'
 
 import EndVeiw from '@/src/components/views/End/End.vue'
 
 
-Vue.config.productionTip = false
-Vue.use(Vuex)
+const VSSR = createRenderer()
+const localVue = createLocalVue()
+localVue.config.productionTip = false
+localVue.use(Vuex)
 
 
 describe('End View', () => {
-  let stubStore = new Vuex.Store({
-    getters: {
-      score: () => 10
+  let actions
+  let stubStore
+
+  beforeEach(() => {
+    actions = {
+      startGame: jest.fn()
     }
+
+    stubStore = new Vuex.Store({
+      state: {},
+      getters: {
+        score: () => 10
+      },
+      actions
+    })
   })
 
   it('matches snapshot', () => {
-    const vm = new Vue({
+    const vm = new localVue({
       store: stubStore,
       render: h => h(EndVeiw)
     })
@@ -28,9 +40,15 @@ describe('End View', () => {
     })
   })
 
-  it('gets score from store', () => {
-    const wrapper = mount(EndVeiw, {store: stubStore})
+  it('displays score from store', () => {
+    const wrapper = mount(EndVeiw, {store: stubStore, localVue})
     const scoreNode = wrapper.find('[data-tid="EndGame-finalScore"]')
     expect(parseInt(scoreNode.text())).toEqual(stubStore.getters.score)
+  })
+
+  it('dispatches startGame action', () => {
+    const wrapper = mount(EndVeiw, {store: stubStore, localVue})
+    wrapper.find('[data-tid="EndGame-retryGame"]').trigger('click')
+    expect(actions.startGame).toBeCalled()
   })
 })
