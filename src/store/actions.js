@@ -20,7 +20,7 @@ export const startGame = ({commit, dispatch, getters}) => {
     commit('fillBoard')
     commit('setScore', 0)
     commit('setMatched', 0)
-    commit('showAllCards', 'game')
+    commit('showAllCards')
     commit('setStage', 'game')
   
     dispatch('commitDelayed', {
@@ -33,7 +33,14 @@ export const startGame = ({commit, dispatch, getters}) => {
     preloadImages(['/static/cards/back.png', '/static/banners/EndGame@2x.png'])
   } else {
     commit('setStage', 'loading')
-    getters.deck.loading.then(() => dispatch('startGame'))
+    return new Promise((resolve, reject) => {
+      getters.deck.loading
+        .then(() => {
+          dispatch('startGame')
+          resolve()
+        })
+        .catch(reject)
+    })
   }
 }
 
