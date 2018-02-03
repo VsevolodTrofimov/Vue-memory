@@ -1,3 +1,4 @@
+export const matched = state => state.matched
 export const unmatched = state => {
   const total = state.board.length * state.board[0].length
   return total - state.matched

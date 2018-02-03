@@ -16,10 +16,19 @@ import CoreButton from '@/src/components/core/Button/Button.vue'
 import CoreHeading from '@/src/components/core/Heading/Heading.vue'
 
 export default {
-  methods: mapActions({
-    start: 'startGame',
-    loadDeck: 'loadDeck'
-  }),
+  methods: {
+    ...mapActions({
+      start: 'startGame',
+      dispatchLoadDeck: 'loadDeck'
+    }),
+    loadDeck: function() {
+      this.dispatchLoadDeck()
+        .catch(err => {
+          console.error(err)
+          this.loadDeck()
+        })
+    }
+  },
 
   mounted: function() {
     this.loadDeck()

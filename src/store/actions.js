@@ -1,18 +1,18 @@
 import config from '@/src/utility/gameConfig'
 import { preloadImages } from '@/src/utility/preload'
 
-export const loadDeck = ({commit, dispatch}, attempts=0) => {
+export const loadDeck = ({commit, dispatch}) => {
   const loading = preloadImages(config.cards.options)
   commit('deckLoaderRegister', loading)
 
-  loading
-    .then(() => {
-      commit('deckLoaded')
-    })
-    .catch((err) => {
-      console.error(err)
-      if(attempts < 10) dispatch('loadDeck', attempts + 1) // retrying
-    })
+  return new Promise((resovle, reject) => {
+    loading
+      .then(() => {
+        commit('deckLoaded')
+        resovle()
+      })
+      .catch(reject)
+  })
 }
 
 export const startGame = ({commit, dispatch, getters}) => {
@@ -69,23 +69,23 @@ export const flipCard = ({commit, dispatch, getters}, card) => {
 }
 
 
-export const matchCards = ({commit, dispatch, state, getters}) => {
+export const matchCards = ({commit, dispatch, getters}) => {
   if(getters.flipped[0].id === getters.flipped[1].id) {
     dispatch('applyCardMatch')
   } else {
-    const diff = config.calcScore.failure(state.matched, getters.unmatched)
+    const diff = config.calcScore.failure(getters.matched, getters.unmatched)
     commit('setScore', getters.score + diff)
   }
 }
 
 
-export const applyCardMatch = ({commit, dispatch, state, getters}) => {
-  const diff = config.calcScore.success(state.matched, getters.unmatched)
+export const applyCardMatch = ({commit, dispatch, getters}) => {
+  const diff = config.calcScore.success(getters.matched, getters.unmatched)
   commit('setScore', getters.score + diff)
   
-  commit('setMatched', state.matched + 2)
+  commit('setMatched', getters.matched + 2)
 
-  getters.flipped.forEach(card => state.toHide.push(card))
+  getters.flipped.forEach(card => commit('queueCardToHide', card))
 
   if(getters.unmatched === 0) {
     dispatch('endGame')
@@ -99,10 +99,10 @@ export const applyCardMatch = ({commit, dispatch, state, getters}) => {
 }
 
 
-export const commitDelayed = ({commit, state}, {mutation, delay, id, data}) => {
+export const commitDelayed = ({commit}, {mutation, delay, id, payload}) => {
   if(typeof id === 'undefined') {
     console.warn(
-      `Not passing id parameter to commitDelayed puts you in risk
+      `Not passing id parameter to commitDelayed puts you at risk
        of unknowingly resetting needed timeout`
     )
   }
@@ -110,7 +110,7 @@ export const commitDelayed = ({commit, state}, {mutation, delay, id, data}) => {
 
   commit('delayMutation', {
     name: `${mutation}---${id}`,
-    cb: () => commit(mutation, data),
+    cb: () => commit(mutation, payload), // mutations cannot commit
     delay
   })
 }
