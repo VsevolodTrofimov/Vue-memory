@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Utility actions Commit Delayed Matches snapshot 1`] = `
+"COMMIT: delayMutation
+{\\"name\\":\\"sample---test-1\\",\\"delay\\":150}
+---
+COMMIT: sample
+\\"samplePayload\\"
+---
+"
+`;
+
+exports[`Utility actions Commit Delayed Matches snapshot 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "delayMutation",
+      Object {
+        "cb": [Function],
+        "delay": 150,
+        "name": "sample---test-1",
+      },
+    ],
+    Array [
+      "sample",
+      "samplePayload",
+    ],
+  ],
+}
+`;
+
+exports[`Utility actions Load deck Matches "good loading" snapshot 1`] = `
+"COMMIT: deckLoaderRegister
+{}
+---
+RESOLUTION: Promise -> resolve
+---
+RESOLUTION: Promise -> resolve
+---
+COMMIT: deckLoaded
+---
+ACTION RESOLVED
+---
+"
+`;
+
+exports[`Utility actions Load deck Matches "network error" snapshot 1`] = `
+"COMMIT: deckLoaderRegister
+{}
+---
+RESOLUTION: Promise -> resolve
+---
+RESOLUTION: Promise -> reject
+403
+---
+ACTION REJECTED
+403
+---
+"
+`;

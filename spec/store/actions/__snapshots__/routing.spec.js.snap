@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Store routing actions End game Matches snapshot 1`] = `
+"COMMIT: setStage
+\\"end\\"
+---
+"
+`;
+
+exports[`Store routing actions Restart game Matches snapshot 1`] = `
+"DISPATCH: startGame
+---
+"
+`;
+
+exports[`Store routing actions Start game Matches "deck loded" snapshot 1`] = `
+"COMMIT: fillBoard
+---
+COMMIT: setScore
+0
+---
+COMMIT: setMatched
+0
+---
+COMMIT: showAllCards
+---
+COMMIT: setStage
+\\"game\\"
+---
+DISPATCH: commitDelayed
+{\\"mutation\\":\\"maskAllCards\\",\\"delay\\":5000,\\"id\\":\\"startGame-1\\"}
+---
+"
+`;
+
+exports[`Store routing actions Start game Matches "waiting for deck to load" snapshot 1`] = `
+"COMMIT: setStage
+\\"loading\\"
+---
+RESOLUTION: deck load -> resolve
+---
+DISPATCH: startGame
+---
+ACTION RESOLVED
+---
+"
+`;

@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game actions Apply card match Matches "default" snapshot 1`] = `
+"COMMIT: setScore
+570
+---
+COMMIT: setMatched
+12
+---
+COMMIT: queueCardToHide
+\\"card1\\"
+---
+COMMIT: queueCardToHide
+\\"card2\\"
+---
+DISPATCH: commitDelayed
+{\\"mutation\\":\\"applyHiding\\",\\"delay\\":500,\\"id\\":\\"applyCardMatch-1\\"}
+---
+"
+`;
+
+exports[`Game actions Apply card match Matches "last pair" snapshot 1`] = `
+"COMMIT: setScore
+150
+---
+COMMIT: setMatched
+12
+---
+COMMIT: queueCardToHide
+\\"card1\\"
+---
+COMMIT: queueCardToHide
+\\"card2\\"
+---
+DISPATCH: endGame
+---
+"
+`;
+
+exports[`Game actions Flip card Matches "2 flipped cards -> again" snapshot 1`] = `
+"COMMIT: applyHiding
+---
+COMMIT: maskAllCards
+---
+COMMIT: flipCard
+{\\"flipped\\":true,\\"url\\":\\"AS\\"}
+---
+"
+`;
+
+exports[`Game actions Flip card Matches "2 flipped cards -> again" snapshot 2`] = `
+"COMMIT: applyHiding
+---
+COMMIT: maskAllCards
+---
+COMMIT: flipCard
+{\\"flipped\\":false,\\"url\\":\\"AS\\"}
+---
+"
+`;
+
+exports[`Game actions Flip card Matches "card is hidden" snapshot 1`] = `
+"COMMIT: applyHiding
+---
+"
+`;
+
+exports[`Game actions Flip card Matches "flipping first card" snapshot 1`] = `
+"COMMIT: applyHiding
+---
+COMMIT: maskAllCards
+---
+COMMIT: flipCard
+{\\"flipped\\":false,\\"url\\":\\"AS\\"}
+---
+"
+`;
+
+exports[`Game actions Flip card Matches "flipping same card" snapshot 1`] = `
+"COMMIT: applyHiding
+---
+"
+`;
+
+exports[`Game actions Flip card Matches "flipping second card" snapshot 1`] = `
+"COMMIT: applyHiding
+---
+COMMIT: flipCard
+{\\"flipped\\":false,\\"url\\":\\"AS\\"}
+---
+DISPATCH: matchCards
+---
+"
+`;
+
+exports[`Game actions Match cards Matches "match" snapshot 1`] = `
+"DISPATCH: applyCardMatch
+---
+"
+`;
+
+exports[`Game actions Match cards Matches "mismatch" snapshot 1`] = `
+"COMMIT: setScore
+null
+---
+"
+`;
