@@ -1,13 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Utility actions Commit Delayed Matches snapshot 1`] = `
-"COMMIT: delayMutation
-{\\"name\\":\\"sample---test-1\\",\\"delay\\":150}
----
-COMMIT: sample
-\\"samplePayload\\"
----
-"
+Array [
+  Object {
+    "message": "COMMIT: delayMutation",
+    "payload": Object {
+      "cb": [Function],
+      "delay": 150,
+      "name": "sample---test-1",
+    },
+  },
+  Object {
+    "message": "COMMIT: sample",
+    "payload": "samplePayload",
+  },
+]
 `;
 
 exports[`Utility actions Commit Delayed Matches snapshot 2`] = `
@@ -30,31 +37,50 @@ exports[`Utility actions Commit Delayed Matches snapshot 2`] = `
 `;
 
 exports[`Utility actions Load deck Matches "good loading" snapshot 1`] = `
-"COMMIT: deckLoaderRegister
-{}
----
-RESOLUTION: Promise -> resolve
----
-RESOLUTION: Promise -> resolve
----
-COMMIT: deckLoaded
----
-ACTION RESOLVED
----
-"
+Array [
+  Object {
+    "message": "COMMIT: deckLoaderRegister",
+    "payload": MockPromise {
+      "name": "Promise",
+      "reject": [Function],
+      "resolve": [Function],
+    },
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> resolve",
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> resolve",
+  },
+  Object {
+    "message": "COMMIT: deckLoaded",
+  },
+  Object {
+    "message": "ACTION RESOLVED",
+  },
+]
 `;
 
 exports[`Utility actions Load deck Matches "network error" snapshot 1`] = `
-"COMMIT: deckLoaderRegister
-{}
----
-RESOLUTION: Promise -> resolve
----
-RESOLUTION: Promise -> reject
-403
----
-ACTION REJECTED
-403
----
-"
+Array [
+  Object {
+    "message": "COMMIT: deckLoaderRegister",
+    "payload": MockPromise {
+      "name": "Promise",
+      "reject": [Function],
+      "resolve": [Function],
+    },
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> resolve",
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> reject",
+    "payload": 403,
+  },
+  Object {
+    "message": "ACTION REJECTED",
+    "payload": 403,
+  },
+]
 `;

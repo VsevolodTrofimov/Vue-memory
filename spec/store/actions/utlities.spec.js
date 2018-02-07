@@ -31,18 +31,11 @@ describe('Utility actions', () => {
     })
 
     it('Matches "network error" snapshot', done => {
-      // avoid needless error logs
-      const realError = console.error
-      console.error = jest.fn()
-
       snapAction(actions.loadDeck, ['Promise', {name: 'Promise', type: 'reject', payload: 403}])
         .then(run => {
-          console.error = realError
           expect(run).toMatchSnapshot()
           done()
         })
-
-      console.error = realError
     })
   })
 

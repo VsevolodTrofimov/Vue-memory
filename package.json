@@ -21,6 +21,7 @@
     "not ie < 10"
   ],
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.11",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",
@@ -43,7 +44,7 @@
     "vue-template-compiler": "^2.4.4",
     "vue-template-es2015-compiler": "1.6.x",
     "vue-test-utils": "^1.0.0-beta.11",
-    "vuex-snapshot": "^0.0.4",
+    "vuex-snapshot": "^0.1.1-a",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-chunk-hash": "^0.5.0",
