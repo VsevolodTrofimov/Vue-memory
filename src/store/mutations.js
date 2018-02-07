@@ -4,7 +4,7 @@ import getUniqueSet from '@/src/utility/getUniqueSet'
 import config from '@/src/utility/gameConfig'
 
 
-export const deckLoaderRegister = (state, loading) => {
+export const deckLoadingRegister = (state, loading) => {
   state.deck.loading = loading
 }
 

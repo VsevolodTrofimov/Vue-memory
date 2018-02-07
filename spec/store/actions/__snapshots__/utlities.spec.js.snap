@@ -39,7 +39,7 @@ exports[`Actions Utility actions Commit Delayed Matches snapshot 2`] = `
 exports[`Actions Utility actions Load deck Matches "good loading" snapshot 1`] = `
 Array [
   Object {
-    "message": "COMMIT: deckLoaderRegister",
+    "message": "COMMIT: deckLoadingRegister",
     "payload": MockPromise {
       "name": "Promise",
       "reject": [Function],
@@ -64,7 +64,7 @@ Array [
 exports[`Actions Utility actions Load deck Matches "network error" snapshot 1`] = `
 Array [
   Object {
-    "message": "COMMIT: deckLoaderRegister",
+    "message": "COMMIT: deckLoadingRegister",
     "payload": MockPromise {
       "name": "Promise",
       "reject": [Function],

@@ -3,7 +3,7 @@ import { preloadImages } from '@/src/utility/preload'
 
 export const loadDeck = ({commit, dispatch}) => {
   const loading = preloadImages(config.cards.options)
-  commit('deckLoaderRegister', loading)
+  commit('deckLoadingRegister', loading)
 
   return new Promise((resovle, reject) => {
     loading
