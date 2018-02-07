@@ -30,7 +30,7 @@ export const startGame = ({commit, dispatch, getters}) => {
     })
 
     //for future
-    preloadImages(['/static/cards/back.png', '/static/banners/EndGame@2x.png'])
+    preloadImages(['/static/cards/back.png'])
   } else {
     commit('setStage', 'loading')
     return new Promise((resolve, reject) => {

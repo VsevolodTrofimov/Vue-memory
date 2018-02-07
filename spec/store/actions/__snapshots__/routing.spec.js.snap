@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Store routing actions End game Matches snapshot 1`] = `
+exports[`Actions Store routing actions End game Matches snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: setStage",
@@ -9,7 +9,7 @@ Array [
 ]
 `;
 
-exports[`Store routing actions Restart game Matches snapshot 1`] = `
+exports[`Actions Store routing actions Restart game Matches snapshot 1`] = `
 Array [
   Object {
     "message": "DISPATCH: startGame",
@@ -17,7 +17,7 @@ Array [
 ]
 `;
 
-exports[`Store routing actions Start game Matches "deck loded" snapshot 1`] = `
+exports[`Actions Store routing actions Start game Matches "deck loded" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: fillBoard",
@@ -48,7 +48,7 @@ Array [
 ]
 `;
 
-exports[`Store routing actions Start game Matches "waiting for deck to load" snapshot 1`] = `
+exports[`Actions Store routing actions Start game Matches "waiting for deck to load" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: setStage",

@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-import { mount, createLocalVue } from 'vue-test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 
 import StartVeiw from '@/src/components/views/Start/Start.vue'

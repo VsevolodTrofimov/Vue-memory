@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Game actions Apply card match Matches "default" snapshot 1`] = `
+exports[`Actions Game actions Apply card match Matches "default" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: setScore",
@@ -29,7 +29,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Apply card match Matches "last pair" snapshot 1`] = `
+exports[`Actions Game actions Apply card match Matches "last pair" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: setScore",
@@ -53,7 +53,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Flip card Matches "2 flipped cards -> again" snapshot 1`] = `
+exports[`Actions Game actions Flip card Matches "2 flipped cards -> again" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: applyHiding",
@@ -71,7 +71,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Flip card Matches "2 flipped cards -> again" snapshot 2`] = `
+exports[`Actions Game actions Flip card Matches "2 flipped cards -> again" snapshot 2`] = `
 Array [
   Object {
     "message": "COMMIT: applyHiding",
@@ -89,7 +89,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Flip card Matches "card is hidden" snapshot 1`] = `
+exports[`Actions Game actions Flip card Matches "card is hidden" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: applyHiding",
@@ -97,7 +97,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Flip card Matches "flipping first card" snapshot 1`] = `
+exports[`Actions Game actions Flip card Matches "flipping first card" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: applyHiding",
@@ -115,7 +115,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Flip card Matches "flipping same card" snapshot 1`] = `
+exports[`Actions Game actions Flip card Matches "flipping same card" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: applyHiding",
@@ -123,7 +123,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Flip card Matches "flipping second card" snapshot 1`] = `
+exports[`Actions Game actions Flip card Matches "flipping second card" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: applyHiding",
@@ -141,7 +141,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Match cards Matches "match" snapshot 1`] = `
+exports[`Actions Game actions Match cards Matches "match" snapshot 1`] = `
 Array [
   Object {
     "message": "DISPATCH: applyCardMatch",
@@ -149,7 +149,7 @@ Array [
 ]
 `;
 
-exports[`Game actions Match cards Matches "mismatch" snapshot 1`] = `
+exports[`Actions Game actions Match cards Matches "mismatch" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: setScore",

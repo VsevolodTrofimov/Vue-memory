@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Utility actions Commit Delayed Matches snapshot 1`] = `
+exports[`Actions Utility actions Commit Delayed Matches snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: delayMutation",
@@ -17,7 +17,7 @@ Array [
 ]
 `;
 
-exports[`Utility actions Commit Delayed Matches snapshot 2`] = `
+exports[`Actions Utility actions Commit Delayed Matches snapshot 2`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -36,7 +36,7 @@ exports[`Utility actions Commit Delayed Matches snapshot 2`] = `
 }
 `;
 
-exports[`Utility actions Load deck Matches "good loading" snapshot 1`] = `
+exports[`Actions Utility actions Load deck Matches "good loading" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: deckLoaderRegister",
@@ -61,7 +61,7 @@ Array [
 ]
 `;
 
-exports[`Utility actions Load deck Matches "network error" snapshot 1`] = `
+exports[`Actions Utility actions Load deck Matches "network error" snapshot 1`] = `
 Array [
   Object {
     "message": "COMMIT: deckLoaderRegister",
