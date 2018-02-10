@@ -10,17 +10,6 @@ describe('Memory Game', function() {
     cy.get('[data-tid="Menu-scores"]').should('have.text', '0')
   }
 
-  const restartGame = () => {
-    cy.get('[data-tid="Menu-newGame"]')
-      .click()
-    
-      cards = []
-      cy.get('[data-tid^="Card"] img').each($img => {
-        cards.push($img.attr('src'))
-      })
-  }
-
-
   it('Starts game on start game click', function() {  
     cy.visit('/')
     
@@ -30,19 +19,25 @@ describe('Memory Game', function() {
   })
 
   it('Has restart option', () => {
-    cy.get('[data-tid^="Card"').first().click()
-    restartGame()
+    cy.get('[data-tid="Menu-newGame"]')
+      .click()
     assertInitialState()
   })
 
   it('Hides all cards after around config.initialVisibleTime', () => {
-    restartGame()
-    const waitTime = config.initialVisibleTime
+    cy.get('[data-tid="Menu-newGame"]')
+      .click()
+
     // timers are not fully accurate in js, so we check with 0.1 loss
-    cy.wait(waitTime * 0.9)
+    cy.wait(config.initialVisibleTime * 0.9)
     cy.get('[data-tid="Card-flipped"]').should('have.length', config.board.size)
     
-    cy.wait(waitTime * 0.2)
+    cards = []
+    cy.get('[data-tid^="Card"] img').each($img => {
+      cards.push($img.attr('src'))
+    })
+
+    cy.wait(config.initialVisibleTime * 0.2)
     cy.get('[data-tid="Card"]').should('have.length', config.board.size)
   })
 
