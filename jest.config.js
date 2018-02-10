@@ -4,6 +4,10 @@ module.exports = {
     "json",
     "vue"
   ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "<rootDir>/cypress/"
+  ],
   "transform": {
     "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
     ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
