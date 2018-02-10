@@ -22,20 +22,18 @@ describe('Actions', () => {
         config.cards.options = configRealOptions
       })
 
-      it('Matches "good loading" snapshot', done => {
-        snapAction(actions.loadDeck, ['Promise', 'Promise'])
-          .then(run => {
-            expect(run).toMatchSnapshot()
-            done()
-          })
+      it('Matches "good loading" snapshot', async done => {
+        const run = await snapAction(actions.loadDeck, ['Promise', 'Promise'])
+        expect(run).toMatchSnapshot()
+        done()
       })
 
-      it('Matches "network error" snapshot', done => {
-        snapAction(actions.loadDeck, ['Promise', {name: 'Promise', type: 'reject', payload: 403}])
-          .then(run => {
-            expect(run).toMatchSnapshot()
-            done()
-          })
+      it('Matches "network error" snapshot', async done => {
+        const resolutions = ['Promise', {name: 'Promise', type: 'reject', payload: 403}]
+        
+        const run = await snapAction(actions.loadDeck, resolutions)
+        expect(run).toMatchSnapshot()
+        done()
       })
     })
 

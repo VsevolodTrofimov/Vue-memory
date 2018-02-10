@@ -6,7 +6,7 @@
 
     <core-heading level="2" class="title"> 
       Поздравляем! <br />
-      Ваш итоговый счет: <span data-tid="EndGame-finalScore"> {{score}} </span>
+      Ваш итоговый счет: <span data-tid="EndGame-finalScore">{{score}}</span>
     </core-heading>
     
     <core-button @click="restart" data-tid="EndGame-retryGame"> Еще раз </core-button>
