@@ -14,7 +14,7 @@ describe('Actions', () => {
         expect(snapAction(actions.startGame, {getters})).toMatchSnapshot()
       })
   
-      it('Matches "waiting for deck to load" snapshot', done => {
+      it('Matches "waiting for deck to load" snapshot', async done => {
         const getters = {
           deck: {
             loaded: false,
@@ -22,11 +22,9 @@ describe('Actions', () => {
           }
         }
   
-        snapAction(actions.startGame, {getters}, ['deck load'])
-          .then(run => {
-            expect(run).toMatchSnapshot()
-            done()
-          })
+        const run = await snapAction(actions.startGame, {getters}, ['deck load'])
+        expect(run).toMatchSnapshot()
+        done()
       })
     })
   

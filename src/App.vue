@@ -1,11 +1,9 @@
 <template>
   <div id="app" data-tid="App">
     <transition appear name="route-change" mode="out-in">
-      <start-view v-if="stage === 'start'" />
+      <start-view v-if="(stage === 'start' || stage === 'loading')" />
       <game-view  v-else-if="stage === 'game'" />
       <end-view   v-else-if="stage === 'end'" />
-
-      <loading-view v-else-if="stage === 'loading'" />
     </transition>
   </div>
 </template>
@@ -13,7 +11,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-import LoadingView from '@/src/components/views/Loading/Loading.vue'
 import StartView from '@/src/components/views/Start/Start.vue'
 import GameView from '@/src/components/views/Game/Game.vue'
 import EndView from '@/src/components/views/End/End.vue'
@@ -24,7 +21,6 @@ export default {
   }),
 
   components: {
-    LoadingView,
     StartView,
     GameView,
     EndView

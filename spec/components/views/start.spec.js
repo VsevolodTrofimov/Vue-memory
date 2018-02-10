@@ -14,8 +14,11 @@ localVue.use(Vuex)
 describe('Start View', () => {
   let actions
   let stubStore
-  
+  let stage
+
   beforeEach(() => {
+    stage = 'start'
+
     actions = {
       startGame: jest.fn(),
       loadDeck: jest.fn()
@@ -23,12 +26,18 @@ describe('Start View', () => {
     
     stubStore = new Vuex.Store({
       state: {},
+      getters: {
+        stage: () => {
+          return stage
+        }
+      },
       actions
     })
   })
 
   it('matches snapshot', () => {
     const vm = new localVue({
+      store: stubStore,
       render: h => h(StartVeiw)
     })
 
@@ -49,5 +58,18 @@ describe('Start View', () => {
     wrapper.find('[data-tid="NewGame-startGame"]').trigger('click')
 
     expect(actions.loadDeck).toBeCalled()
+  })
+
+  it('matches "loading" snapshot', () => {
+    stage = 'loading'
+
+    const vm = new localVue({
+      store: stubStore,
+      render: h => h(StartVeiw)
+    })
+
+    VSSR.renderToString(vm, (err, str) => {
+      expect(str).toMatchSnapshot()
+    })
   })
 })

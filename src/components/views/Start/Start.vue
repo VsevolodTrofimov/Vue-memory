@@ -5,7 +5,10 @@
          class="banner">
 
     <core-heading level="1" class="title"> Memory Game </core-heading>
-    <core-button @click='start' data-tid="NewGame-startGame"> Начать игру </core-button>
+    <core-button v-if="stage === 'loading'" disabled>
+      Раскладываем карты...
+    </core-button>
+    <core-button v-else @click='start' data-tid="NewGame-startGame"> Начать игру </core-button>
   </div>
 </template>
 
@@ -16,6 +19,10 @@ import CoreButton from '@/src/components/core/Button/Button.vue'
 import CoreHeading from '@/src/components/core/Heading/Heading.vue'
 
 export default {
+  computed: mapGetters({
+    stage: 'stage'
+  }),
+
   methods: {
     ...mapActions({
       start: 'startGame',

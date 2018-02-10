@@ -6,16 +6,16 @@
       </core-button>
       <core-heading level="4"> 
         Очки:
-        <span data-tid="Menu-scores"> {{score}} </span> 
+        <span data-tid="Menu-scores">{{score}}</span> 
       </core-heading>
     </div>
     
     <div class="board" data-tid="Deck">
       <div class="board__row" v-for="(row, idx) in board" :key="row[0].id + idx">
-        <game-card class="board__card" v-bind="card" 
+        <game-card class="board__card" v-bind="card" :id="undefined"
                    @click.native="flip(card)"
-                   :data-tid="card.flipped ? 'Card-flipped' : 'Card'"
-                   v-for="(card, idx) in row" :key="card.id + idx" />      
+                   v-for="(card, idx) in row" :key="card.id + idx"
+                   :data-tid="getCardTid(card)" />      
       </div>
     </div>
   </div>
@@ -35,10 +35,18 @@ export default {
     board: 'board'
   }),
 
-  methods: mapActions({
-    flip: 'flipCard',
-    restart: 'restartGame'
-  }),
+  methods: {
+    ...mapActions({
+      flip: 'flipCard',
+      restart: 'restartGame'
+    }),
+    getCardTid: card => {
+      if(card.hidden) return undefined 
+      if(card.flipped) return 'Card-flipped'
+      
+      return 'Card'
+    }
+  },
 
   components: {
     CoreButton,
@@ -78,6 +86,6 @@ export default {
     justify-content: center
     margin: 0 0-$card-margin/2 // compensates card left-right margins
     
-    .board__card
-      margin: 0 $card-margin/2 $card-margin $card-margin/2
+  .board__card
+    margin: 0 $card-margin/2 $card-margin $card-margin/2
 </style>
