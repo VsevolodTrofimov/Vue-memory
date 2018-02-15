@@ -3,9 +3,11 @@
     <div class="card card--hidden" v-if="hidden" key="hidden">
       <img :src="path" class="card__image" />
     </div>
+
     <div class="card" v-else-if="flipped" key="front">
       <img :src="path" class="card__image" />
     </div>
+
     <div class="card card--back" v-else key="back">
       <img src="/static/cards/back.png" class="card__image" />
     </div>
