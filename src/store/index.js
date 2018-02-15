@@ -1,14 +1,11 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 
 import * as getters from './getters'
 import * as actions from './actions'
 import * as mutations from './mutations'
 
 
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
+const store = {
   state: {
     stage: 'start', // also possible: game, end
     
@@ -27,6 +24,6 @@ const store = new Vuex.Store({
   getters,
   mutations,
   actions
-})
+}
 
 export default store
