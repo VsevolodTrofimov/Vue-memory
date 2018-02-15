@@ -14,7 +14,7 @@
       <div class="board__row" v-for="(row, idx) in board" :key="row[0].id + idx">
         <game-card class="board__card" v-bind="card" :id="undefined"
                    @click.native="flip(card)"
-                   v-for="(card, idx) in row" :key="card.id + idx"
+                   v-for="card in row" :key="card.id"
                    :data-tid="getCardTid(card)" />      
       </div>
     </div>

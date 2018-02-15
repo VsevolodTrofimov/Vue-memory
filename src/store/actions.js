@@ -70,7 +70,7 @@ export const flipCard = ({commit, dispatch, getters}, card) => {
 
 
 export const matchCards = ({commit, dispatch, getters}) => {
-  if(getters.flipped[0].id === getters.flipped[1].id) {
+  if(getters.flipped[0].value === getters.flipped[1].value) {
     dispatch('applyCardMatch')
   } else {
     const diff = config.calcScore.failure(getters.matched, getters.unmatched)

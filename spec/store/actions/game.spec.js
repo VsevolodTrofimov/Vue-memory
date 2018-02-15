@@ -62,7 +62,7 @@ describe('Actions', () => {
     describe('Match cards', () => {
       it('Matches "match" snapshot', () => {
         const getters = {
-          flipped: [{id: 1}, {id: 1}]
+          flipped: [{value: 1}, {value: 1}]
         }
       
         expect(snapAction(actions.matchCards, {getters})).toMatchSnapshot()
@@ -70,7 +70,7 @@ describe('Actions', () => {
 
       it('Matches "mismatch" snapshot', () => {
         const getters = {
-          flipped: [{id: 1}, {id: 2}]
+          flipped: [{value: 1}, {value: 2}]
         }
       
         expect(snapAction(actions.matchCards, {getters})).toMatchSnapshot()
