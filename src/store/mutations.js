@@ -74,7 +74,7 @@ export const applyHiding = state => {
 
 
 export const flipCard = (state, card) => {
-  if( ! card.flipped) card.flipped = true
+  card.flipped = ! card.flipped
 }
 
 export const queueCardToHide = (state, card) => {
