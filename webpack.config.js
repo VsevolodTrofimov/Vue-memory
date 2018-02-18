@@ -8,6 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
+
 module.exports = env => {
   const config = {
     entry: './src/main.js',
@@ -108,12 +109,14 @@ module.exports = env => {
     ])
   }
 
+
   if(typeof env !== 'undefined' && env.analyze) {
     config.plugins = (config.plugins || []).concat([
       new BundleAnalyzerPlugin()
     ])
   }
 
+  
   return config
 }
 
