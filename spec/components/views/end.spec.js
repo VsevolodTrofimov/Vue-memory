@@ -30,12 +30,9 @@ describe('Views', () => {
     })
 
     it('matches snapshot', () => {
-      const vm = new localVue({
-        store: stubStore,
-        render: h => h(EndVeiw)
-      })
+      const wrapper = mount(EndVeiw, {store: stubStore, localVue})
 
-      VSSR.renderToString(vm, (err, str) => {
+      VSSR.renderToString(wrapper.vm, (err, str) => {
         expect(str).toMatchSnapshot()
       })
     })

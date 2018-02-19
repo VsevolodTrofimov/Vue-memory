@@ -36,25 +36,22 @@ describe('Views', () => {
     })
 
     it('matches snapshot', () => {
-      const vm = new localVue({
-        store: stubStore,
-        render: h => h(StartVeiw)
-      })
+      const wrapper = mount(StartVeiw, {store: stubStore, localVue})
 
-      VSSR.renderToString(vm, (err, str) => {
+      VSSR.renderToString(wrapper.vm, (err, str) => {
         expect(str).toMatchSnapshot()
       })
     })
     
     it('dispatches startGame action', () => {
-      const wrapper = mount(StartVeiw, {store: stubStore, localVue })
+      const wrapper = mount(StartVeiw, {store: stubStore, localVue})
       wrapper.find('[data-tid="NewGame-startGame"]').trigger('click')
 
       expect(actions.startGame).toBeCalled()
     })
 
     it('dispatches loadDeck action', () => {
-      const wrapper = mount(StartVeiw, {store: stubStore, localVue })
+      const wrapper = mount(StartVeiw, {store: stubStore, localVue})
       wrapper.find('[data-tid="NewGame-startGame"]').trigger('click')
 
       expect(actions.loadDeck).toBeCalled()
