@@ -30,12 +30,6 @@ const config = {
 }
 
 
-const ensureEvenBoard = config => {
-  if((config.board.cols * config.board.rows) % 2) ++config.board.cols
-
-  config.board.size = config.board.rows * config.board.cols
-}
-
 const computeCardOptions = cards => {
   const options = []
 
@@ -48,27 +42,63 @@ const computeCardOptions = cards => {
   return options
 }
 
-const ensureNoRepeats = config => {
-  while(config.cards.options.length < config.board.size / 2) {
-    
-    if(config.board.cols > config.board.rows) {
-      if(config.board.rows % 2) {
+config.cards.options = computeCardOptions(config.cards)
+config.board.size = config.board.rows * config.board.cols
+
+
+if(typeof process==='undefined' 
+|| !process.env 
+|| process.env.NODE_ENV !== 'production') {
+  const appliedFixes = {
+    even: false,
+    size: false
+  }
+
+  const ensureEvenBoard = config => {
+    if((config.board.cols * config.board.rows) % 2) {
+      ++config.board.cols
+      appliedFixes.even = true
+    }
+
+    config.board.size = config.board.rows * config.board.cols
+  }
+
+  const ensureNoRepeats = config => {
+    while(config.cards.options.length < config.board.size / 2) {
+      
+      if(config.board.cols > config.board.rows) {
+        if(config.board.rows % 2) {
+          --config.board.cols
+          --config.board.rows
+        }
+
         --config.board.cols
+      } else {
         --config.board.rows
       }
 
-      --config.board.cols
-    } else {
-      --config.board.rows
-    }
+      /* in case board beacame\stopped being even 
+        as a side effect of size reduction */
+      appliedFixes.even = false
+      ensureEvenBoard(config)
 
-    ensureEvenBoard(config)
-  }  
+      appliedFixes.size = true
+    }  
+  }
+
+
+  // ensuring proper board
+  ensureEvenBoard(config)
+  ensureNoRepeats(config)
+
+
+  // notifying about changes
+  if(appliedFixes.size) console.warn('Board was too big')
+  if(appliedFixes.even) console.warn('Board had uneven number of tiles')
+  if(appliedFixes.size || appliedFixes.even) {
+    console.warn('Changed board size to', 
+                `[${config.board.rows} x ${config.board.cols}]`)
+  }
 }
-
-
-config.cards.options = computeCardOptions(config.cards)
-ensureEvenBoard(config)
-ensureNoRepeats(config)
 
 export default config

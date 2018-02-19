@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Actions Utility actions Commit Delayed Matches snapshot 1`] = `
+Array [
+  Object {
+    "message": "COMMIT: delayMutation",
+    "payload": Object {
+      "cb": [Function],
+      "delay": 150,
+      "name": "sample---test-1",
+    },
+  },
+  Object {
+    "message": "COMMIT: sample",
+    "payload": "samplePayload",
+  },
+]
+`;
+
+exports[`Actions Utility actions Commit Delayed Matches snapshot 2`] = `
+Array [
+  Array [
+    "delayMutation",
+    Object {
+      "cb": [Function],
+      "delay": 150,
+      "name": "sample---test-1",
+    },
+  ],
+  Array [
+    "sample",
+    "samplePayload",
+  ],
+]
+`;
+
+exports[`Actions Utility actions Load deck Matches "good loading" snapshot 1`] = `
+Array [
+  Object {
+    "message": "COMMIT: deckLoadingRegister",
+    "payload": MockPromise {
+      "name": "Promise",
+      "reject": [Function],
+      "resolve": [Function],
+    },
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> resolve",
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> resolve",
+  },
+  Object {
+    "message": "COMMIT: deckLoaded",
+  },
+  Object {
+    "message": "ACTION RESOLVED",
+  },
+]
+`;
+
+exports[`Actions Utility actions Load deck Matches "network error" snapshot 1`] = `
+Array [
+  Object {
+    "message": "COMMIT: deckLoadingRegister",
+    "payload": MockPromise {
+      "name": "Promise",
+      "reject": [Function],
+      "resolve": [Function],
+    },
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> resolve",
+  },
+  Object {
+    "message": "RESOLUTION: Promise -> reject",
+    "payload": 403,
+  },
+  Object {
+    "message": "ACTION REJECTED",
+    "payload": 403,
+  },
+]
+`;

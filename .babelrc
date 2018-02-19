@@ -1,0 +1,18 @@
+{
+  "presets": [
+    "stage-3"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["node8"]
+      ]
+    },
+    "development": {
+      "presets": [["env", {"modules": false}]]
+    },
+    "production": {
+      "presets": [["env", {"modules": false}]]
+    }
+  }
+}

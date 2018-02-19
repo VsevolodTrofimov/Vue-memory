@@ -1,3 +1,4 @@
+export const matched = state => state.matched
 export const unmatched = state => {
   const total = state.board.length * state.board[0].length
   return total - state.matched
@@ -17,3 +18,4 @@ export const flipped = state => {
 export const score = state => state.score
 export const board = state => state.board
 export const stage = state => state.stage
+export const deck  = state => state.deck

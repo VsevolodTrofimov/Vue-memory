@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Actions Store routing actions End game Matches snapshot 1`] = `
+Array [
+  Object {
+    "message": "COMMIT: setStage",
+    "payload": "end",
+  },
+]
+`;
+
+exports[`Actions Store routing actions Restart game Matches snapshot 1`] = `
+Array [
+  Object {
+    "message": "DISPATCH: startGame",
+  },
+]
+`;
+
+exports[`Actions Store routing actions Start game Matches "deck loded" snapshot 1`] = `
+Array [
+  Object {
+    "message": "COMMIT: fillBoard",
+  },
+  Object {
+    "message": "COMMIT: setScore",
+    "payload": 0,
+  },
+  Object {
+    "message": "COMMIT: setMatched",
+    "payload": 0,
+  },
+  Object {
+    "message": "COMMIT: showAllCards",
+  },
+  Object {
+    "message": "COMMIT: setStage",
+    "payload": "game",
+  },
+  Object {
+    "message": "DISPATCH: commitDelayed",
+    "payload": Object {
+      "delay": 5000,
+      "id": "startGame-1",
+      "mutation": "maskAllCards",
+    },
+  },
+]
+`;
+
+exports[`Actions Store routing actions Start game Matches "waiting for deck to load" snapshot 1`] = `
+Array [
+  Object {
+    "message": "COMMIT: setStage",
+    "payload": "loading",
+  },
+  Object {
+    "message": "RESOLUTION: deck load -> resolve",
+  },
+  Object {
+    "message": "DISPATCH: startGame",
+  },
+  Object {
+    "message": "ACTION RESOLVED",
+  },
+]
+`;

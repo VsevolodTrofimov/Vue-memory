@@ -3,10 +3,12 @@
     <div class="card card--hidden" v-if="hidden" key="hidden">
       <img :src="path" class="card__image" />
     </div>
+
     <div class="card" v-else-if="flipped" key="front">
       <img :src="path" class="card__image" />
     </div>
-    <div class="card" v-else key="back">
+
+    <div class="card card--back" v-else key="back">
       <img src="/static/cards/back.png" class="card__image" />
     </div>
   </transition>
@@ -36,6 +38,9 @@ export default {
   .card--hidden
     opacity: 0
 
+  
+  .card--back
+    background: $card-back-color
   
   @include flip-animation("card-flip", $card-flip-jump-height)
 </style>

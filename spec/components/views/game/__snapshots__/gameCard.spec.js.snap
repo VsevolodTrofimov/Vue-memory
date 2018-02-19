@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Views Game View Card matches flipped snapshot 1`] = `
+<div appear="" name="card-flip" mode="out-in" class="card">
+    <img src="/static/img.png" class="card__image">
+</div>
+`;
+
+exports[`Views Game View Card matches hidden snapshot 1`] = `
+<div appear="" name="card-flip" mode="out-in" class="card card--hidden">
+    <img class="card__image">
+</div>
+`;
+
+exports[`Views Game View Card matches snapshot 1`] = `
+<div appear="" name="card-flip" mode="out-in" class="card card--back">
+    <img src="/static/cards/back.png" class="card__image">
+</div>
+`;

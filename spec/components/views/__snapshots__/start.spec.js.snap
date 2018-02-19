@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Views Start View matches "loading" snapshot 1`] = `
+<div class="view">
+    <img srcset="/static/banners/StartGame.png, /static/banners/StartGame@2x.png 2x" alt="Flipped cards" class="banner">
+    <h1 class="heading title"> Memory Game </h1>
+    <button disabled="disabled" class="btn">
+        Раскладываем карты...
+    </button>
+</div>
+`;
+
+exports[`Views Start View matches snapshot 1`] = `
+<div class="view">
+    <img srcset="/static/banners/StartGame.png, /static/banners/StartGame@2x.png 2x" alt="Flipped cards" class="banner">
+    <h1 class="heading title"> Memory Game </h1>
+    <button data-tid="NewGame-startGame" class="btn"> Начать игру </button>
+</div>
+`;

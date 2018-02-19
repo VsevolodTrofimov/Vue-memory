@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Views Game View matches snapshot 1`] = `
+<div class="view">
+    <div class="meta">
+        <button data-tid="Menu-newGame" class="btn ghost">
+            Начать заново
+        </button>
+        <h4 class="heading">
+            Очки:
+            <span data-tid="Menu-scores">10</span></h4>
+    </div>
+    <div data-tid="Deck" class="board">
+        <div class="board__row">
+            <div data-tid="Card" class="card card--back board__card">
+                <img src="/static/cards/back.png" class="card__image">
+            </div>
+            <div data-tid="Card" class="card card--back board__card">
+                <img src="/static/cards/back.png" class="card__image">
+            </div>
+            <div data-tid="Card" class="card card--back board__card">
+                <img src="/static/cards/back.png" class="card__image">
+            </div>
+        </div>
+        <div class="board__row">
+            <div data-tid="Card" class="card card--back board__card">
+                <img src="/static/cards/back.png" class="card__image">
+            </div>
+            <div data-tid="Card" class="card card--back board__card">
+                <img src="/static/cards/back.png" class="card__image">
+            </div>
+            <div data-tid="Card" class="card card--back board__card">
+                <img src="/static/cards/back.png" class="card__image">
+            </div>
+        </div>
+    </div>
+</div>
+`;
