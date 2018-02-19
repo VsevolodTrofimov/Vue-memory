@@ -17,28 +17,39 @@ import { mapGetters, mapActions } from 'vuex'
 
 import CoreButton from '@/src/components/core/Button/Button.vue'
 import CoreHeading from '@/src/components/core/Heading/Heading.vue'
+import { setTimeout, clearTimeout } from 'timers';
 
 export default {
   computed: mapGetters({
     stage: 'stage'
   }),
 
+  data() {
+    return {
+      retryTimeout: setTimeout(() => {}, 0)
+    }
+  },
+
   methods: {
     ...mapActions({
       start: 'startGame',
       dispatchLoadDeck: 'loadDeck'
     }),
-    loadDeck: function() {
+    loadDeck: function(retries=0) {
       this.dispatchLoadDeck()
         .catch(err => {
           console.error(err)
-          this.loadDeck()
+          this.retryTimeout = setTimeout(() => this.loadDeck(retries + 1), retries * 1000)
         })
     }
   },
 
   mounted: function() {
     this.loadDeck()
+  },
+
+  beforeDestroy: function() {
+    clearTimeout(this.retryTimeout)
   },
 
   components: {
