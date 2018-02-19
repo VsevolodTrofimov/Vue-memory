@@ -13,6 +13,10 @@ describe('Memory Game', function() {
   it('Starts game on start game click', function() {  
     cy.visit('/')
     
+    cy.wait(500)
+
+    cy.screenshot()
+    
     cy.get('[data-tid="NewGame-startGame"]').click()
 
     cy.get('[data-tid="Deck"]').should('be.visible')
@@ -39,6 +43,8 @@ describe('Memory Game', function() {
 
     cy.wait(config.initialVisibleTime * 0.2)
     cy.get('[data-tid="Card"]').should('have.length', config.board.size)
+
+    cy.screenshot()
   })
 
   it('Flips single card, and does so once', () => {
@@ -151,6 +157,8 @@ describe('Memory Game', function() {
 
     cy.get('[data-tid="EndGame-finalScore"]')
       .should('have.text', score.toString())
+
+    cy.screenshot()
   })
 
   it('Is replayable', () => {
