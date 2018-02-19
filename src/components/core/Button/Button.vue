@@ -34,7 +34,7 @@
       opacity: 1
 
     &:active
-      box-shadow: $wave--m
+      box-shadow: $box-shadow-wave--m
       transition: 0.15s ease
 
   .btn.wide
