@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`End View matches snapshot 1`] = `
+exports[`Views End View matches snapshot 1`] = `
 <div class="view">
     <img srcset="/static/banners/EndGame.png, /static/banners/EndGame@2x.png 2x" alt="Flipped cards" class="banner">
     <h2 class="heading title">

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Start View matches "loading" snapshot 1`] = `
+exports[`Views Start View matches "loading" snapshot 1`] = `
 <div class="view">
     <img srcset="/static/banners/StartGame.png, /static/banners/StartGame@2x.png 2x" alt="Flipped cards" class="banner">
     <h1 class="heading title"> Memory Game </h1>
@@ -10,7 +10,7 @@ exports[`Start View matches "loading" snapshot 1`] = `
 </div>
 `;
 
-exports[`Start View matches snapshot 1`] = `
+exports[`Views Start View matches snapshot 1`] = `
 <div class="view">
     <img srcset="/static/banners/StartGame.png, /static/banners/StartGame@2x.png 2x" alt="Flipped cards" class="banner">
     <h1 class="heading title"> Memory Game </h1>

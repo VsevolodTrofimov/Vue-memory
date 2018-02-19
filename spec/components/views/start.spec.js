@@ -10,66 +10,67 @@ const localVue = createLocalVue()
 localVue.config.productionTip = false
 localVue.use(Vuex)
 
+describe('Views', () => {
+  describe('Start View', () => {
+    let actions
+    let stubStore
+    let stage
 
-describe('Start View', () => {
-  let actions
-  let stubStore
-  let stage
+    beforeEach(() => {
+      stage = 'start'
 
-  beforeEach(() => {
-    stage = 'start'
+      actions = {
+        startGame: jest.fn(),
+        loadDeck: jest.fn()
+      }
+      
+      stubStore = new Vuex.Store({
+        state: {},
+        getters: {
+          stage: () => {
+            return stage
+          }
+        },
+        actions
+      })
+    })
 
-    actions = {
-      startGame: jest.fn(),
-      loadDeck: jest.fn()
-    }
+    it('matches snapshot', () => {
+      const vm = new localVue({
+        store: stubStore,
+        render: h => h(StartVeiw)
+      })
+
+      VSSR.renderToString(vm, (err, str) => {
+        expect(str).toMatchSnapshot()
+      })
+    })
     
-    stubStore = new Vuex.Store({
-      state: {},
-      getters: {
-        stage: () => {
-          return stage
-        }
-      },
-      actions
-    })
-  })
+    it('dispatches startGame action', () => {
+      const wrapper = mount(StartVeiw, {store: stubStore, localVue })
+      wrapper.find('[data-tid="NewGame-startGame"]').trigger('click')
 
-  it('matches snapshot', () => {
-    const vm = new localVue({
-      store: stubStore,
-      render: h => h(StartVeiw)
+      expect(actions.startGame).toBeCalled()
     })
 
-    VSSR.renderToString(vm, (err, str) => {
-      expect(str).toMatchSnapshot()
-    })
-  })
-  
-  it('dispatches startGame action', () => {
-    const wrapper = mount(StartVeiw, {store: stubStore, localVue })
-    wrapper.find('[data-tid="NewGame-startGame"]').trigger('click')
+    it('dispatches loadDeck action', () => {
+      const wrapper = mount(StartVeiw, {store: stubStore, localVue })
+      wrapper.find('[data-tid="NewGame-startGame"]').trigger('click')
 
-    expect(actions.startGame).toBeCalled()
-  })
-
-  it('dispatches loadDeck action', () => {
-    const wrapper = mount(StartVeiw, {store: stubStore, localVue })
-    wrapper.find('[data-tid="NewGame-startGame"]').trigger('click')
-
-    expect(actions.loadDeck).toBeCalled()
-  })
-
-  it('matches "loading" snapshot', () => {
-    stage = 'loading'
-
-    const vm = new localVue({
-      store: stubStore,
-      render: h => h(StartVeiw)
+      expect(actions.loadDeck).toBeCalled()
     })
 
-    VSSR.renderToString(vm, (err, str) => {
-      expect(str).toMatchSnapshot()
+    it('matches "loading" snapshot', () => {
+      stage = 'loading'
+
+      const vm = new localVue({
+        store: stubStore,
+        render: h => h(StartVeiw)
+      })
+
+      VSSR.renderToString(vm, (err, str) => {
+        expect(str).toMatchSnapshot()
+      })
     })
   })
 })
