@@ -15,7 +15,7 @@ describe('Memory Game', function() {
     
     cy.wait(500)
 
-    cy.screenshot()
+    cy.screenshot('Start View')
     
     cy.get('[data-tid="NewGame-startGame"]').click()
 
@@ -44,7 +44,7 @@ describe('Memory Game', function() {
     cy.wait(config.initialVisibleTime * 0.2)
     cy.get('[data-tid="Card"]').should('have.length', config.board.size)
 
-    cy.screenshot()
+    cy.screenshot('Game View')
   })
 
   it('Flips single card, and does so once', () => {
@@ -158,7 +158,7 @@ describe('Memory Game', function() {
     cy.get('[data-tid="EndGame-finalScore"]')
       .should('have.text', score.toString())
 
-    cy.screenshot()
+    cy.screenshot('End view')
   })
 
   it('Is replayable', () => {

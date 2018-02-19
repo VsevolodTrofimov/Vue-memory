@@ -10,6 +10,7 @@ const localVue = createLocalVue()
 localVue.config.productionTip = false
 localVue.use(Vuex)
 
+
 describe('Views', () => {
   describe('End View', () => {
     let actions
@@ -40,12 +41,14 @@ describe('Views', () => {
     it('displays score from store', () => {
       const wrapper = mount(EndVeiw, {store: stubStore, localVue})
       const scoreNode = wrapper.find('[data-tid="EndGame-finalScore"]')
+      
       expect(parseInt(scoreNode.text())).toEqual(stubStore.getters.score)
     })
 
     it('dispatches startGame action', () => {
       const wrapper = mount(EndVeiw, {store: stubStore, localVue})
       wrapper.find('[data-tid="EndGame-retryGame"]').trigger('click')
+      
       expect(actions.startGame).toBeCalled()
     })
   })
