@@ -18,22 +18,20 @@ Array [
 `;
 
 exports[`Actions Utility actions Commit Delayed Matches snapshot 2`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      "delayMutation",
-      Object {
-        "cb": [Function],
-        "delay": 150,
-        "name": "sample---test-1",
-      },
-    ],
-    Array [
-      "sample",
-      "samplePayload",
-    ],
+Array [
+  Array [
+    "delayMutation",
+    Object {
+      "cb": [Function],
+      "delay": 150,
+      "name": "sample---test-1",
+    },
   ],
-}
+  Array [
+    "sample",
+    "samplePayload",
+  ],
+]
 `;
 
 exports[`Actions Utility actions Load deck Matches "good loading" snapshot 1`] = `

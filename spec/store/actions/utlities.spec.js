@@ -54,7 +54,7 @@ describe('Actions', () => {
           commit
         })).toMatchSnapshot()
 
-        expect(commit).toMatchSnapshot()
+        expect(commit.mock.calls.map(c => c.slice(0, 2))).toMatchSnapshot()
       })
 
       it('Warns about not using id', () => {
