@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components Core Heading matches snapshot 1`] = `<h3 class="heading"> Heading </h3>`;
