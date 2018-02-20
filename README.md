@@ -6,7 +6,7 @@
 ## Использование
 Предполагается, что у вас уже установлен `nodejs` версии 8 или выше и `npm`
 
-**OS X \ Unix**
+**Unix**
 ```bash
 NODE_ENV=development npm install
 ```
