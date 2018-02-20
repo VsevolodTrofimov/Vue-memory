@@ -16,6 +16,8 @@ NODE_ENV=development npm install
 ($env:NODE_ENV="development") -and (npm install)
 ```
 
+*Довольно долго т.к. приходится тянуть cypress(e2e тесты) и сжимающие картинки пакеты.*
+
 ### Режим разработки
 ```bash
 npm run dev
