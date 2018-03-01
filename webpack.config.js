@@ -7,6 +7,7 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 
 module.exports = env => {
@@ -23,22 +24,20 @@ module.exports = env => {
       rules: [
         {
           test: /\.sass$/,
-          use: [
-            'vue-style-loader',
+          use: ExtractTextPlugin.extract([
             'css-loader',
             'sass-loader?indentedSyntax'
-          ],
+          ]),
         },
         {
           test: /\.vue$/,
           loader: 'vue-loader',
           options: {
             loaders: {
-              'sass': [
-                'vue-style-loader',
+              sass: ExtractTextPlugin.extract([
                 'css-loader',
                 'sass-loader?indentedSyntax'
-              ]
+              ]),
             }
           }
         },
@@ -59,6 +58,7 @@ module.exports = env => {
   
   
     plugins: [
+      new ExtractTextPlugin('style-[hash].css'),
       new HtmlWebpackPlugin({
         title: 'Vue memory',
         template: path.resolve(__dirname, './index.html'),
